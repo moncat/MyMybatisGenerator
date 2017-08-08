@@ -1,20 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.moncat</groupId>
-  <artifactId>MyMyBatisGenerator</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>MyMyBatisGenerator</name>
-  <description>A generator for  mybatis which is refactor by Moncat</description>
-  <packaging>jar</packaging>
- 
-  <parent>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-parent</artifactId>
-	<version>1.5.3.RELEASE</version>
-	<relativePath/> 
-  </parent>
-  <dependencies>
-	    <dependency> 
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.moncat</groupId>
+    <artifactId>MyMyBatisGenerator</artifactId>
+    <packaging>jar</packaging>
+
+    <name>moncat zhang</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <url>https://github.com/moncat/MyMybatisGenerator</url>
+    <description>this is a generator for mybatis,you can generate the service dao model mapper with the project.</description>
+    <inceptionYear>2017</inceptionYear>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git://github.com/moncat/MyMybatisGenerator.git</connection>
+        <developerConnection>scm:git:git@github.com:moncat/MyMybatisGenerator.git</developerConnection>
+        <url>https://github.com/moncat/MyMybatisGenerator</url>
+    	<tag>HEAD</tag>
+ 	</scm>
+    <developers>
+        <developer>
+            <id>moncat</id>
+            <name>moncat</name>
+            <email>moncat@126.com</email>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/moncat/MyMybatisGenerator/issues</url>
+    </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+         <dependency> 
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.0</version>
@@ -22,23 +58,23 @@
 		 <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>1.5.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
+            <version>1.5.3.RELEASE</version>
         </dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.41</version>
 			<scope>runtime</scope>
 		</dependency>	
-		 <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
 		<dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-commons</artifactId>
+		    <version>1.13.3.RELEASE</version>
 		</dependency>		
 		<!-- j2ee 基础包 -->
 		<dependency>
@@ -50,41 +86,90 @@
         <dependency>  
              <groupId>org.projectlombok</groupId>  
              <artifactId>lombok</artifactId>  
+             <version>1.16.16</version>
          </dependency> 
          <dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
+             <version>1.9.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>
 			<artifactId>mybatis-generator-core</artifactId>
 			<version>1.3.2</version>
 		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.4</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/java/</sourceDirectory>
+        <testSourceDirectory>src/test/java/</testSourceDirectory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com.google.android:android</exclude>
+                    </excludes>
+                    <buildOutputDirectory>bin</buildOutputDirectory>
+                    <classpathContainers>
+                        <classpathContainer>com.android.ide.eclipse.adt.ANDROID_FRAMEWORK</classpathContainer>
+                    </classpathContainers>
+                    <additionalProjectnatures>
+                        <projectnature>com.android.ide.eclipse.adt.AndroidNature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildcommand>com.android.ide.eclipse.adt.ResourceManagerBuilder</buildcommand>
+                        <buildcommand>com.android.ide.eclipse.adt.PreCompilerBuilder</buildcommand>
+                        <buildcommand>com.android.ide.eclipse.adt.ApkBuilder</buildcommand>
+                    </additionalBuildcommands>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

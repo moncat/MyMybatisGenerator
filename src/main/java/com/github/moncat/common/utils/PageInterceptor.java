@@ -83,7 +83,7 @@ public class PageInterceptor implements Interceptor {
 	 * 设置注册拦截器时设定的属性 该方法，会在配置文件加载前执行
 	 */
 	public void setProperties(Properties properties) {
-		this.databaseType = properties.getProperty("databaseType") == null ? "oracle"
+		this.databaseType = properties.getProperty("databaseType") == null ? "mysql"
 				: properties.getProperty("databaseType");
 	}
 

@@ -1,0 +1,10 @@
+com.github.moncat.common.dao
+com.github.moncat.common.entity
+com.github.moncat.common.exception
+com.github.moncat.common.generator.constant
+com.github.moncat.common.generator.id
+com.github.moncat.common.generator.model
+com.github.moncat.common.generator.plugins
+com.github.moncat.common.generator.util
+com.github.moncat.common.service
+com.github.moncat.common.utils

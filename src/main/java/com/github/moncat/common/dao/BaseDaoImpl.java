@@ -42,7 +42,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 
 	/**
 	 * 获取泛型类型的实体对象类全名
-	 * @return
 	 */
 	protected String getDefaultSqlNamespace() {
 		Class<?> genericClass = BeanUtils.getGenericClass(this.getClass());
@@ -51,8 +50,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 
 	/**
 	 * 获取SqlMapping命名空间 
-	 * @author zyl
-	 * @return SqlMapping命名空间 
 	 */
 	public String getSqlNamespace() {
 		return sqlNamespace;
@@ -61,8 +58,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 	/**
 	 * 设置SqlMapping命名空间。 以改变默认的SqlMapping命名空间，
 	 * 不能滥用此方法随意改变SqlMapping命名空间。 
-	 * @author zyl
-	 * @param sqlNamespace SqlMapping命名空间 
 	 */
 	public void setSqlNamespace(String sqlNamespace) {
 		this.sqlNamespace = sqlNamespace;
@@ -70,8 +65,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 
 	/**
 	 * 将SqlMapping命名空间与给定的SqlMapping名组合在一起。
-	 * @param sqlName SqlMapping名 
-	 * @return 组合了SqlMapping命名空间后的完整SqlMapping名 
 	 */
 	protected String getSqlName(String sqlName) {
 		return sqlNamespace + SQLNAME_SEPARATOR + sqlName;
@@ -440,8 +433,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 
 	/**
 	 * 设置分页
-	 * @param pageInfo 分页信息
-	 * @return SQL分页参数对象
 	 */
 	protected RowBounds getRowBounds(Pageable pageable) {
 		RowBounds bounds = RowBounds.DEFAULT;
@@ -453,9 +444,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 
 	/**
 	 * 获取分页查询参数
-	 * @param query 查询对象
-	 * @param pageable 分页对象
-	 * @return Map 查询参数
 	 */
 	protected Map<String, Object> getParams(T query, Pageable pageable) {
 		Map<String, Object> params = BeanUtils.toMap(query, getRowBounds(pageable));
@@ -468,9 +456,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 	
 	/**
 	 * 获取排序查询参数
-	 * @param query 查询对象
-	 * @param sort 排序对象
-	 * @return Map 查询参数
 	 */
 	protected Map<String, Object> getParams(T query, Sort sort) {
 		Map<String, Object> params = BeanUtils.toMap(query);
@@ -482,10 +467,6 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 	}
 	/**
 	 * 获取LinkedMap
-	 * @param query 查询对象
-	 * @param mapKey map键
-	 * @param sqlId mapper
-	 * @return
 	 */
 	private <K, V extends T> Map<K, V> getLinkedMap(Map<String, Object> params, String mapKey, String sqlId) {
 

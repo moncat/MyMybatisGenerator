@@ -8,15 +8,6 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.ResultContext;
 import org.apache.ibatis.session.ResultHandler;
 
-/**
- * @Title: ExpandMapResultHandler.java
- * @Description: 扩展MapResult 用于linked排序
- * @author ZYL
- * @date 2016年5月25日 上午9:58:08
- * @version V1.0   
- * @param <V>
- * @param <K>
- */
 public class ExpandMapResultHandler<K,V> implements ResultHandler{
 
 	private final Map<K, V> mappedResults;

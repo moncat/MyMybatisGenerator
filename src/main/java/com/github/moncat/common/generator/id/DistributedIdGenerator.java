@@ -1,14 +1,7 @@
-/**
- * 
- */
 package com.github.moncat.common.generator.id;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 分布式ID自增算法<br/>
- * 来自网络Twitter Snowflake 算法
- */
 @Component
 public class DistributedIdGenerator implements IdGenerator{
 	

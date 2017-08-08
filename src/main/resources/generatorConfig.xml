@@ -11,23 +11,17 @@
 	<context id="cabinet" targetRuntime="MyBatis3">
 	
 		<!-- 自定义插件给实体类增加了字段注释  -->
-		<plugin type="com.co.mybatis.generator.plugins.FieldCommentPlugin"/>
-		<!-- 该插件给实体类增加了equals和hashCode方法  -->
-<!-- 		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/> -->
-		<!-- 该插件给实体类添加toString()方法  -->
-<!-- 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/> -->
+		<plugin type="com.github.moncat.common.generator.plugins.FieldCommentPlugin"/>
 		<!-- 自定义插件给mapper文件Insert添加主键，删除InsertSelective  -->
-		<plugin type="com.co.mybatis.generator.plugins.InsertPlugin"/>
+		<plugin type="com.github.moncat.common.generator.plugins.InsertPlugin"/>
 		<!-- 自定义插件给mapper文件添加其他方法  -->
-		<plugin type="com.co.mybatis.generator.plugins.SelectPlugin"/>
-		
-<!-- 		自定义插件给添加service类  -->
-<!-- 		自定义插件给添加dao类  -->
-<!-- 		自定义插件给添加aide类  -->
-
-	 	<plugin type="com.co.mybatis.generator.plugins.ServicePlugin"/>
- 		<plugin type="com.co.mybatis.generator.plugins.DaoPlugin"/>
- 		<plugin type="com.co.mybatis.generator.plugins.AidePlugin"/> 
+		<plugin type="com.github.moncat.common.generator.plugins.SelectPlugin"/>
+		<!-- 自定义插件给添加service类  -->
+	 	<plugin type="com.github.moncat.common.generator.plugins.ServicePlugin"/>
+		<!-- 自定义插件给添加dao类  -->
+ 		<plugin type="com.github.moncat.common.generator.plugins.DaoPlugin"/>
+		<!-- 自定义插件给添加aide类  -->
+ 		<plugin type="com.github.moncat.common.generator.plugins.AidePlugin"/> 
  		
 		<commentGenerator>
 			<!-- java文件编码，防止乱码  -->
@@ -49,7 +43,7 @@
 		</javaTypeResolver>
 		<!-- 生成实体类地址  -->
 		<!-- Update next line for your package -->
-		<javaModelGenerator targetPackage="com.co.example.entity.admin"   
+		<javaModelGenerator targetPackage="${package}.entity.${model}"   
 		
 			targetProject="src\main\java">
 			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.co.example.entity， true:com.co.example.entity.[schemaName]  -->
@@ -58,7 +52,7 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!-- Update next line for your package -->
-		<sqlMapGenerator targetPackage="com.co.example.sqlmaps.admin"   
+		<sqlMapGenerator targetPackage="${package}.sqlmaps.${model}"   
 			targetProject="src\main\java">
 			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.co.example.sqlmaps， true:com.co.example.sqlmaps.[schemaName]  -->
 			<property name="enableSubPackages" value="false" />
@@ -80,7 +74,7 @@
         <!-- <columnOverride column="XXX" jdbcType="VARCHAR" />  --> 
         <!-- </table>  -->
         <!-- Update next line for your tableName -->
-        <table tableName="t_admin" modelType="flat" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false"/>  
+        <table tableName="${table}" modelType="flat" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false"/>  
 		<!-- 使用命令：mvn mybatis-generator:generate -->
 	</context>
 </generatorConfiguration>

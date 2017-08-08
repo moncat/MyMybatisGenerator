@@ -20,7 +20,6 @@ public abstract class BaseServiceImpl<T,ID extends Serializable> implements Base
 
 	/**
 	 * 获取基础数据库操作类
-	 * @return
 	 */
 	protected abstract BaseDao<T,ID> getBaseDao();
 	
