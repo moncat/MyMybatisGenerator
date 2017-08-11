@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.moncat</groupId>
     <artifactId>MyMyBatisGenerator</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>moncat zhang</name>
-    <version>0.0.1-SNAPSHOT</version>
     <url>https://github.com/moncat/MyMybatisGenerator</url>
     <description>this is a generator for mybatis,you can generate the service dao model mapper with the project.</description>
     <inceptionYear>2017</inceptionYear>
@@ -172,4 +172,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Repository</name>
+            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>

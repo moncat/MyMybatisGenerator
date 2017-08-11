@@ -45,14 +45,14 @@ public class InsertPlugin extends PluginAdapter {
 	private void addPrimaryKey(XmlElement element,IntrospectedTable introspectedTable) {
 		
 		String primaryColumnName = null;
-		
+		IntrospectedColumn primaryKeyColumn = null;
         if (introspectedTable.getPrimaryKeyColumns().size() > 0) {
         	//主键
-			IntrospectedColumn primaryKeyColumn = introspectedTable.getPrimaryKeyColumns().get(0);
+			primaryKeyColumn = introspectedTable.getPrimaryKeyColumns().get(0);
 			
 //	        element.addAttribute(new Attribute("useGeneratedKeys","true")); //$NON-NLS-1$
-//	        element.addAttribute(new Attribute("keyColumn",MyBatis3FormattingUtilities.getEscapedColumnName(primaryKeyColumn))); //$NON-NLS-1$
-//	        element.addAttribute(new Attribute("keyProperty",primaryKeyColumn.getJavaProperty())); //$NON-NLS-1$
+	        element.addAttribute(new Attribute("keyColumn",MyBatis3FormattingUtilities.getEscapedColumnName(primaryKeyColumn))); //$NON-NLS-1$
+	        element.addAttribute(new Attribute("keyProperty",primaryKeyColumn.getJavaProperty())); //$NON-NLS-1$
 			primaryColumnName = primaryKeyColumn.getActualColumnName();
         }
         
@@ -66,6 +66,18 @@ public class InsertPlugin extends PluginAdapter {
         
         //移除原有记录
         element.getElements().removeAll(element.getElements());
+        
+        XmlElement selectKeyElement = new XmlElement("selectKey");
+        
+       // keyProperty="id" resultType="java.lang.Long" order="BEFORE"
+        selectKeyElement.addAttribute(new Attribute("keyProperty",primaryKeyColumn.getJavaProperty())); 
+        selectKeyElement.addAttribute(new Attribute("resultType","java.lang.Long")); 
+        selectKeyElement.addAttribute(new Attribute("order","BEFORE")); 
+        selectKeyElement.addElement(new TextElement("SELECT ${@"+GenerateConstant.NEXTID_CLASS+"@"+GenerateConstant.NEXTID_METHOD+"()}"));
+       
+        element.addElement(selectKeyElement);
+        
+        
         
         StringBuilder insertClause = new StringBuilder();
         StringBuilder valuesClause = new StringBuilder();
@@ -94,12 +106,12 @@ public class InsertPlugin extends PluginAdapter {
             insertClause.append(MyBatis3FormattingUtilities
                     .getEscapedColumnName(introspectedColumn));
             //判断是否为主键，为主键则自定义生成规则
-            if(primaryColumnName.equals(actualColumnName)){
-            	valuesClause.append("${@"+GenerateConstant.NEXTID_CLASS+"@"+GenerateConstant.NEXTID_METHOD+"()}");
-            }else{
+//            if(primaryColumnName.equals(actualColumnName)){
+//            	valuesClause.append();
+//            }else{
             	valuesClause.append(MyBatis3FormattingUtilities
             			.getParameterClause(introspectedColumn));
-            }
+//            }
             if (iter.hasNext()) {
                 insertClause.append(", "); //$NON-NLS-1$
                 valuesClause.append(", "); //$NON-NLS-1$

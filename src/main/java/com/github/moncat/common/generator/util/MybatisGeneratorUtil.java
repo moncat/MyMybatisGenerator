@@ -1,7 +1,11 @@
 package com.github.moncat.common.generator.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,9 @@ public class MybatisGeneratorUtil {
 			System.out.println("start generator ...");
 			List<String> warnings = new ArrayList<String>();
 			boolean overwrite = true;
-			File configFile = new File(MybatisGeneratorUtil.class.getResource("/generatorConfig.xml").getFile());
+		//	URL resource = MybatisGeneratorUtil.class.getResource("/generatorConfig.xml");
+		//	File configFile = new File(resource.getFile());
+			InputStream configFile = MybatisGeneratorUtil.class.getClassLoader().getResourceAsStream("generatorConfig.xml");
 			ConfigurationParser cp = new ConfigurationParser(warnings);
 			Configuration config = cp.parseConfiguration(configFile);
 			DefaultShellCallback callback = new DefaultShellCallback(overwrite);
