@@ -32,6 +32,7 @@ public class GenerateConstant {
 			add("create_by");
 			add("update_time");
 			add("update_by");
+			add("is_active");
 			add("del_flg");
 		}
 	};

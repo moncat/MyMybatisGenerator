@@ -26,6 +26,9 @@ public class BaseEntity {
     /** 更新人 */
     private Long updateBy;
 
+    /** 是否有效  1有效  0失效 */
+    private Byte isActive;
+    
     /** 是否删除  1已删除  0未删除 */
     private Byte delFlg;
 }

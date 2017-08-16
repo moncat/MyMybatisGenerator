@@ -36,6 +36,11 @@ public class QueryModelGenerator extends AbstractJavaGenerator{
             topLevelClass.setSuperClass(fqjt);
             topLevelClass.addImportedType(fqjt);
         }
+        
+        topLevelClass.addAnnotation("@Getter");
+		topLevelClass.addAnnotation("@Setter");
+		topLevelClass.addImportedType("lombok.Getter");
+		topLevelClass.addImportedType("lombok.Setter");
 
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
         answer.add(topLevelClass);

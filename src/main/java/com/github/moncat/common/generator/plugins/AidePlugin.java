@@ -19,6 +19,8 @@ public class AidePlugin extends PluginAdapter {
 	public boolean validate(List<String> warnings) {
 		return true;
 	}
+	
+
 
 	public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(
 			IntrospectedTable introspectedTable) {
