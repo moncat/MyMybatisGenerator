@@ -1,5 +1,6 @@
 package com.github.moncat.common.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,8 +8,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class BaseEntity {
+public class BaseEntity  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** 排序  */
 	private Byte itemOrder;
 	

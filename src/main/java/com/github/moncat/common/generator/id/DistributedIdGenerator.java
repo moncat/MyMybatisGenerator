@@ -21,6 +21,12 @@ public class DistributedIdGenerator implements IdGenerator{
 		System.out.println(maxWorkerId); //15
 	}
 
+	public static Long sss(){
+		return 0l;
+		
+	}
+	
+	
 	public DistributedIdGenerator() {
 		super();
 		final long workerId = 0l;

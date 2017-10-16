@@ -22,7 +22,6 @@
  		<plugin type="com.github.moncat.common.generator.plugins.DaoPlugin"/>
 		<!-- 自定义插件给添加aide类  -->
  		<plugin type="com.github.moncat.common.generator.plugins.AidePlugin"/> 
- 		
 		<commentGenerator>
 			<!-- java文件编码，防止乱码  -->
 			<property name="javaFileEncoding" value="UTF-8"/>
