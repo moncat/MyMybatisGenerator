@@ -360,6 +360,20 @@ public abstract class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<
 	}
 	
 	
+	public <V extends T> Page<V> selectPageList(T query, Pageable pageable,Long total ) {
+		try {
+			List<V> contentList = this.sqlSession.selectList(getSqlName(BaseSqlId.SQL_SELECT),
+					getParams(query, pageable));
+			if(total == null){
+				total = this.selectCount(query);
+			}
+			return new PageImpl<V>(contentList, pageable, total);
+		} catch (Exception e) {
+			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(BaseSqlId.SQL_SELECT)), e);
+		}
+	}
+	
+	
 	public <V extends T> Page<V> selectPageList(T query, Pageable pageable,String sqlId,String sqlIdCount) {
 		try {
 			List<V> contentList = this.sqlSession.selectList(getSqlName(sqlId),getParams(query, pageable));

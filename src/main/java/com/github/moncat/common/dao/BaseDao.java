@@ -62,6 +62,8 @@ public interface BaseDao<T,ID extends Serializable>{
 
 	<V extends T> Page<V> selectPageList(T query, Pageable pageable);
 	
+	<V extends T> Page<V> selectPageList(T query, Pageable pageable,Long total);
+	
 	<V extends T> Page<V> selectPageList(T query, Pageable pageable,String sqlId,String sqlIdCount);
 	
 	<K, V extends T> Map<K, V> selectMap(T query, String mapKey);

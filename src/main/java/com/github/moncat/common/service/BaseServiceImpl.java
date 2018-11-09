@@ -116,6 +116,11 @@ public abstract class BaseServiceImpl<T,ID extends Serializable> implements Base
 	}
 	
 	
+	public <V extends T> Page<V> queryPageList(T query, Pageable pageable,Long total) {
+		return getBaseDao().selectPageList(query, pageable,total);
+	}
+	
+	
 	public <V extends T> Page<V> queryPageList(T query, Pageable pageable, String sqlId,String sqlIdCount) {
 		return getBaseDao().selectPageList(query, pageable,sqlId,sqlIdCount);
 	}

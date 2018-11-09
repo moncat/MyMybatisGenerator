@@ -100,6 +100,8 @@ public interface BaseService<T,ID extends Serializable> {
 	 */
 	<V extends T> Page<V> queryPageList(T query, Pageable pageable);
 	
+	<V extends T> Page<V> queryPageList(T query, Pageable pageable,Long total);
+	
 	/**
 	 *<pre>查询对象列表，注意：在给定非null的分页对象时该方法自动设置分页总记录数,如果query和pageable同时为null则查询所有</pre>
 	 */
