@@ -327,10 +327,9 @@ public class SelectPlugin extends PluginAdapter {
 			sb.setLength(0);
 			sb.append("select t.");
 			sb.append(MyBatis3FormattingUtilities.getEscapedColumnName(primaryKeyColumn));
-			sb.append(" from ");
-			sb.append("(select * from ");
+			sb.append(" from ");			
 			sb.append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
-			sb.append(") t");
+			sb.append(" t");
 			answer.addElement(new TextElement(sb.toString()));
 			addTableJoinClause(answer);
 			XmlElement includeWhereElement = new XmlElement("include"); //$NON-NLS-1$
